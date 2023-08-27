@@ -1,4 +1,4 @@
-package com.coderscampus.assignment5;
+package com.coderscampus;
 
 public interface CustomList<T> {
 	/**

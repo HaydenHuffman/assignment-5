@@ -1,26 +1,30 @@
-package com.coderscampus.assignment5;
+package com.coderscampus;
 
 
 public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
+	int i = 0;
 
 	@Override
 	public boolean add(T item) {
-		for (int i = 0; i <= items.length + 1; i++) {
 			if (i == items.length) {
-				Object[] newItems = new Object[items.length * 2];
-				for (int j = 0; j < items.length; j++) {
-					newItems[j] = items[j];
-				}
-				items = newItems;
-
-			} else if (items[i] == null) {
-				items[i] = item;
-				return true; 
+				expandBackingArray();
 			}
+			items[i] = item;
+			i++;
+			return true; 
+			
 		}
-		return false;
-	}
+		
+	
+		
+	public void expandBackingArray() {
+		Object[] oldItems = items;
+		items = new Object[items.length * 2];
+		for (int j = 0; j < oldItems.length; j++) {
+            items[j] = oldItems[j];
+        }
+	}	
 
 	@Override
 	public int getSize() {
